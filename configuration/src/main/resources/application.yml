@@ -1,0 +1,14 @@
+micronaut:
+  application:
+    name: configuration
+
+app:
+  name: "MicronautApp"
+  version: 1
+  supportedLanguages:
+    - "English"
+    - "Spanish"
+    - "French"
+  metadata:
+    author: "mkyong"
+    license: "MIT"
