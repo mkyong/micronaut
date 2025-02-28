@@ -1,0 +1,11 @@
+micronaut:
+  application:
+    name: configurationbuilder
+
+myapp:
+  database:
+    url: jdbc:mysql://localhost:3306/mydb
+    username: root
+    password: secret
+    max-size: 10
+    min-size: 1
