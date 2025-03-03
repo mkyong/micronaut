@@ -1,0 +1,14 @@
+micronaut:
+  application:
+    name: configuration
+
+app:
+  name: "MicronautApp - External"
+  version: 999
+  supportedLanguages:
+    - "English"
+    - "Spanish"
+    - "French"
+  metadata:
+    author: "mkyong - External"
+    license: "MIT"
