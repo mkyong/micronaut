@@ -1,54 +1,38 @@
-<!--
 <configuration>
 
-    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+    <!-- Console appender -->
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
         <encoder>
-            <pattern>%cyan(%d{HH:mm:ss.SSS}) %gray([%thread]) %highlight(%-5level) %magenta(%logger{36}) - %msg%n</pattern>
+            <pattern>%d [%thread] %-5level %logger{36} - %msg%n</pattern>
         </encoder>
     </appender>
 
-    <root level="info">
-        <appender-ref ref="STDOUT" />
+    <!-- File appender -->
+    <appender name="FILE" class="ch.qos.logback.core.FileAppender">
+        <file>logs/application.log</file>
+        <encoder>
+            <pattern>%d [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- Rolling file appender -->
+    <appender name="ROLLING_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>logs/rolling-app.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>logs/rolling-app-%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>7</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%d [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <root level="INFO">
+        <appender-ref ref="CONSOLE" />
+        <appender-ref ref="FILE" />
+        <appender-ref ref="ROLLING_FILE" />
     </root>
 
-</configuration>
--->
-
-<configuration>
-
-<!-- Console appender -->
-<appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
-    <encoder>
-        <pattern>%d [%thread] %-5level %logger{36} - %msg%n</pattern>
-    </encoder>
-</appender>
-
-<!-- File appender -->
-<appender name="FILE" class="ch.qos.logback.core.FileAppender">
-    <file>logs/application.log</file>
-    <encoder>
-        <pattern>%d [%thread] %-5level %logger{36} - %msg%n</pattern>
-    </encoder>
-</appender>
-
-<!-- Rolling file appender -->
-<appender name="ROLLING_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
-    <file>logs/rolling-app.log</file>
-    <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-        <fileNamePattern>logs/rolling-app-%d{yyyy-MM-dd}.log</fileNamePattern>
-        <maxHistory>7</maxHistory>
-    </rollingPolicy>
-    <encoder>
-        <pattern>%d [%thread] %-5level %logger{36} - %msg%n</pattern>
-    </encoder>
-</appender>
-
-<root level="INFO">
-    <appender-ref ref="CONSOLE" />
-    <appender-ref ref="FILE" />
-    <appender-ref ref="ROLLING_FILE" />
-</root>
-
-<logger name="com.mkyong" level="DEBUG" />
+    <logger name="com.mkyong" level="DEBUG" />
 
 </configuration>
